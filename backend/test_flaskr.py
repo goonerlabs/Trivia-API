@@ -1,8 +1,8 @@
 import os
 import unittest
 import json
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import true
 
 from flaskr import create_app
 from models import setup_db, Question, Category
@@ -71,16 +71,16 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'resource not found')
 
-    # def test_delete_question(self):
-    #     res = self.client().delete('/api/v1.0/questions/2')
-    #     data = json.loads(res.data)
+    def test_delete_question(self):
+        res = self.client().delete('/api/v1.0/questions/2')
+        data = json.loads(res.data)
 
-    #     question = Question.query.filter(Question.id == 2).one_or_none()
+        question = Question.query.filter(Question.id == 2).one_or_none()
 
-    #     self.assertEqual(res.status_code, 200)
-    #     self.assertEqual(data['success'], True)
-    #     self.assertEqual(data['deleted'], 2)
-    #     self.assertEqual(question, None)
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data['success'], True)
+        self.assertEqual(data['deleted'], 2)
+        self.assertEqual(question, None)
 
     def test_404_question_to_delete_does_not_exist(self):
         res = self.client().delete('/api/v1.0/questions/10000')
@@ -98,8 +98,9 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(data['created'])
 
-    def test_400_bad_request_creating_question(self):
-        res = self.client().post('/api/v1.0/questions/10', json=self.new_question)
+
+    def test_bad_request_creating_question(self):
+        res = self.client().post('/api/v1.0/questions', json={})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 400)
