@@ -38,6 +38,8 @@ DROP DATABASE IF EXISTS trivia;
 CREATE DATABASE trivia;
 \c trivia
 \i trivia.psql
+\c trivia
+\dt 
 \q
 ```
 To run the application run the following commands:
@@ -76,6 +78,8 @@ DROP DATABASE IF EXISTS trivia_test;
 CREATE DATABASE trivia_test;
 \c trivia_test
 \i test_trivia.psql
+\c trivia_test
+\dt
 \q
 ```
 And then run the following command to run the tests:
