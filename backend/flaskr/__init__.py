@@ -90,7 +90,6 @@ def create_app(test_config=None):
                 'questions' : current_questions,
                 'totalQuestions' : len(Question.query.all()),
                 'categories' : categories,
-                'currentCategory' : ''
             })
         
         except:
@@ -281,7 +280,7 @@ def create_app(test_config=None):
         }), 500
 
     @app.errorhandler(405)
-    def bad_request(error):
+    def method_not_allowed(error):
         return jsonify({
             'success' : False,
             'error' : 405,
