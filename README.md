@@ -25,7 +25,12 @@ python3 -m pip install pip --upgrade
 python3 -m pip install requirements.txt
 ```
 
-In order to populate your database, navigate to the backend folder and run ```psql -h localhost -U <database_username> <database_password>``` to enter the psql shell.
+In order to populate your database, navigate to the backend folder and run: 
+```sh
+psql -h localhost -U <database_username> <database_password>
+``` 
+to enter the psql shell.
+
 Then run the following commands to create the test database:
 
 ```pgsql
@@ -57,7 +62,12 @@ By default, the frontend will run on ```localhost:3000```. Please ensure that th
 
 ## Tests
 
-In order to run tests, navigate to the backend folder and run ```psql -h localhost -U <database_username> <database_password>``` to enter the psql shell.
+In order to run tests, navigate to the backend folder and run
+```sh
+psql -h localhost -U <database_username> <database_password>
+``` 
+to enter the psql shell.
+
 Then run the following commands to create the test database:
 
 ```pgsql
