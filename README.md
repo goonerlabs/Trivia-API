@@ -24,6 +24,16 @@ source venv/Scripts/activate
 python3 -m pip install pip --upgrade
 python3 -m pip install requirements.txt
 ```
+
+In order to populate your database, navigate to the backend folder and run ```psql -h localhost -U <database_username> <database_password>``` to enter the psql shell.
+Then run the following commands to create the test database:
+
+```pgsql
+DROP DATABASE IF EXISTS trivia;
+CREATE DATABASE trivia;
+\i trivia.psql
+\q
+```
 To run the application run the following commands:
 
 ```sh
@@ -47,7 +57,7 @@ By default, the frontend will run on ```localhost:3000```. Please ensure that th
 
 ## Tests
 
-In order to run tests, navigate to the backend folder and run ```psql -h localhost -U <database_username>``` to enter the psql shell.
+In order to run tests, navigate to the backend folder and run ```psql -h localhost -U <database_username> <database_password>``` to enter the psql shell.
 Then run the following commands to create the test database:
 
 ```pgsql
@@ -273,7 +283,7 @@ curl http://127.0.0.1:5000/api/v1.0/categories/6/questions
 
 - Sample: 
 ```sh
-curl -X POST http://127.0.0.1:5000/api/v1.0/quizzes -d '{"previous_questions": [], "quiz_category": {"id":"6", "type":"Sports"}}'
+curl -X POST http://127.0.0.1:5000/api/v1.0/quizzes  -H 'Content-type:application/json' -d '{"previous_questions": [], "quiz_category": {"id":"6", "type":"Sports"}}'
 ```
 
 ```javascript
@@ -303,4 +313,6 @@ Coach Caryn McCarthy (Tutor)
 Sunday Ajiroghene (Connect sessions lead)
 
 Emmanuel Agbavwe (Friend and Accountability buddy)
+
+The rest of the awesome team at Udacity and ALX-T Africa (thanks for the scholarship).
 
