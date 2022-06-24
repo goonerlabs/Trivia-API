@@ -243,7 +243,7 @@ curl -X DELETE http://127.0.0.1:5000/api/v1.0/questions/2
 
  - Sample: 
   ```sh 
- -curl -X POST http://127.0.0.1:5000/api/v1.0/questions -H 'Content-type:application/json' -d '{"question":"What is the name of the second largest city in Africa", "answer":"Ibadan", "difficulty": "5", "category": "3"}' 
+ curl -X POST http://127.0.0.1:5000/api/v1.0/questions -H 'Content-type:application/json' -d '{"question":"What is the name of the second largest city in Africa", "answer":"Ibadan", "difficulty": "5", "category": "3"}' 
  ```
   
   ```javascript
