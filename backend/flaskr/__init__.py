@@ -61,8 +61,6 @@ def create_app(test_config=None):
             'categories' : categories
         })
     
-
-
     """
     endpoint to handle GET requests for questions,
     including pagination.
@@ -89,10 +87,6 @@ def create_app(test_config=None):
             'totalQuestions' : len(Question.query.all()),
             'categories' : categories,
         })
-        
-        
-            
-
 
     """
     endpoint that DELETEs questions using a question ID
@@ -115,8 +109,6 @@ def create_app(test_config=None):
             'deleted' : question_id
         })
         
-
-
     """
     This endpoint either POSTs (creates) a new question, or searches for a question depending on whether or not a search term is included in the request body.
 
@@ -159,7 +151,6 @@ def create_app(test_config=None):
                 'created' : question.id 
             })
         
-    
     """
 
     This endpoint gets questions based on category.
@@ -187,11 +178,6 @@ def create_app(test_config=None):
                 'currentCategory' : category.type
             })
             
-        
-            
-            
-        
-
     """
     this POST endpoint gets questions to play the quiz.
     it takes category and previous question parameters
@@ -235,8 +221,6 @@ def create_app(test_config=None):
             'question' : question_chosen
         })
     
-       
-
     """
     Common error handlers for all expected errors.
     """
