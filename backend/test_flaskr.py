@@ -6,8 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 from flaskr import create_app
 from models import setup_db, Question, Category
-
-
+from settings import TEST_DB_NAME, DB_PASSWORD
 
 
 class TriviaTestCase(unittest.TestCase):
@@ -17,15 +16,17 @@ class TriviaTestCase(unittest.TestCase):
         """Define test variables and initialize app."""
         self.app = create_app()
         self.client = self.app.test_client
-        self.database_name = "trivia_test"
-        self.database_path = "postgresql://{}:@{}/{}".format('postgres','localhost:5432', self.database_name)
+        self.database_name = TEST_DB_NAME
+        self.database_password = DB_PASSWORD
+        self.database_path = "postgresql://{}:{}@{}/{}".format('postgres', 
+        self.database_password,'localhost:5432', self.database_name)
         setup_db(self.app, self.database_path)
 
         self.new_question = {
-            'question' : 'Who scored the last goal in the 2011 champions league final?',
-            'answer' : 'David Villa',
-            'difficulty' : 2,
-            'category' : 6
+            'question': 'Who scored the last goal in the 2011 champions league final?',
+            'answer': 'David Villa',
+            'difficulty': 2,
+            'category': 6
         }
 
         # binds the app to the current context
@@ -145,7 +146,7 @@ class TriviaTestCase(unittest.TestCase):
     def test_get_quiz_question(self):
         res = self.client().post('/api/v1.0/quizzes', json={
             'previous_questions' : [],
-            'quiz_category' : {'id': '6', 'type' : 'Sports'}
+            'quiz_category' : {'id': '6', 'type': 'Sports'}
         })
 
         data = json.loads(res.data)
@@ -155,7 +156,7 @@ class TriviaTestCase(unittest.TestCase):
         self.assertTrue(data['question'])
 
     def test_400_not_enough_info_to_process(self):
-        res = self.client().post('/api/v1.0/quizzes', json={'previous_questions' : []})
+        res = self.client().post('/api/v1.0/quizzes', json={'previous_questions': []})
 
         data= json.loads(res.data)
 
